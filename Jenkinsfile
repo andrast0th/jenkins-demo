@@ -10,6 +10,9 @@ pipeline {
     tools {
         gradle 'gradle'
     }
+    parameters {
+        booleanParam(defaultValue: false, description: 'Publish to Nexus', name: 'SHOULD_PUBLISH')
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -21,13 +24,12 @@ pipeline {
                 sayHello 'Joe'
             }
         }
-        stage('Set Version') {
+        stage('Print date') {
             steps {
                 script {
                     def date = new Date()
                     print date
                 }
-                sh 'gradle clean build -x test'
             }
         }
         stage('Build') {
@@ -40,7 +42,10 @@ pipeline {
                 sh 'gradle cleanTest test'
             }
         }
-        stage('Archive') {
+        stage('Publish') {
+            when {
+                expression { params.SHOULD_PUBLISH }
+            }
             steps {
                 sh 'gradle publish'
             }

@@ -5,6 +5,9 @@ pipeline {
     triggers {
         cron(CRON_SETTINGS)
     }
+    tools {
+        gradle 'gradle'
+    }
     stages {
         stage('Checkout') {
             steps {

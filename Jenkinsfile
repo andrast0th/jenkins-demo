@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'gradle test'
+                sh 'gradle cleanTest test'
             }
         }
         stage('Archive') {

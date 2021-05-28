@@ -1,18 +1,27 @@
+CRON_SETTINGS = '*/5 * * * *'
+
 pipeline {
     agent any
-
+    triggers {
+        cron(CRON_SETTINGS)
+    }
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/atothhpe/jenkins-demo'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh 'gradle clean build -x'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'gradle clean test'
             }
         }
-        stage('Deploy') {
+        stage('Archive') {
             steps {
                 echo 'Deploying....'
             }

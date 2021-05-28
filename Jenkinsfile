@@ -1,7 +1,5 @@
 @Library('jenkins-demo-lib') _
 
-#!/usr/bin/env groovy
-
 CRON_SETTINGS = '*/5 * * * *'
 
 pipeline {

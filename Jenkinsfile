@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Say Hello') {
             steps {
-                sayHello
+                sayHello 'Joe'
             }
         }
         stage('Set Version') {

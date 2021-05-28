@@ -29,7 +29,11 @@ pipeline {
                 script {
                     def date = new Date()
                     print date
+                    env.CUSTOM_DATE = date.toString()
                 }
+                echo "$BRANCH_NAME"
+                echo "$BUILD_NUMBER"
+                echo "$JOB_NAME"
             }
         }
         stage('Build') {

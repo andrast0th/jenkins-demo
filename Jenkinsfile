@@ -14,6 +14,15 @@ pipeline {
                 git 'https://github.com/atothhpe/jenkins-demo'
             }
         }
+        stage('Set Version') {
+            steps {
+                script {
+                    let date = Date()
+                    print date
+                }
+                sh 'gradle clean build -x test'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'gradle clean build -x test'

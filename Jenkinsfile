@@ -17,7 +17,7 @@ pipeline {
         stage('Set Version') {
             steps {
                 script {
-                    let date = Date()
+                    let date = new Date()
                     print date
                 }
                 sh 'gradle clean build -x test'

@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                echo 'Deploying....'
+                sh 'gradle publish'
             }
         }
     }

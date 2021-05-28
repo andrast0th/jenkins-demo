@@ -31,6 +31,9 @@ pipeline {
         }
     }
     post {
+        success {
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+        }
         always {
             junit 'build/test-results/**/*.xml'
         }

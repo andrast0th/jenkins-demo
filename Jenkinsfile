@@ -31,7 +31,6 @@ pipeline {
                     print date
                     env.CUSTOM_DATE = date.toString()
                 }
-                echo "$BRANCH_NAME"
                 echo "$BUILD_NUMBER"
                 echo "$JOB_NAME"
             }
